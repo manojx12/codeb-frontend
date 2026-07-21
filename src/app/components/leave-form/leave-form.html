@@ -1,0 +1,72 @@
+<div class="leave-form-container">
+  <h2>{{ isEditMode ? 'Edit Leave Request' : 'Apply for Leave' }}</h2>
+
+  <form (ngSubmit)="onSubmit()" #leaveForm="ngForm" class="leave-form">
+
+    <div class="form-group">
+      <label for="employee">Employee</label>
+      <select
+        id="employee"
+        name="employee"
+        [(ngModel)]="selectedEmployeeId"
+        required
+      >
+        <option [ngValue]="null" disabled>-- Select Employee --</option>
+        <option *ngFor="let emp of employees" [ngValue]="emp.id">{{ emp.name }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="fromDate">From Date</label>
+      <input
+        type="date"
+        id="fromDate"
+        name="fromDate"
+        [(ngModel)]="leave.fromDate"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="toDate">To Date</label>
+      <input
+        type="date"
+        id="toDate"
+        name="toDate"
+        [(ngModel)]="leave.toDate"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="reason">Reason</label>
+      <textarea
+        id="reason"
+        name="reason"
+        [(ngModel)]="leave.reason"
+        placeholder="e.g. Family function"
+        rows="3"
+        required
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="status">Status</label>
+      <select
+        id="status"
+        name="status"
+        [(ngModel)]="leave.status"
+        required
+      >
+        <option value="pending">Pending</option>
+        <option value="approved">Approved</option>
+        <option value="rejected">Rejected</option>
+      </select>
+    </div>
+
+    <button type="submit" [disabled]="!leaveForm.valid">
+      {{ isEditMode ? 'Update Leave' : 'Submit Leave' }}
+    </button>
+
+  </form>
+</div>

@@ -1,0 +1,23 @@
+<div class="subzone-form-container">
+  <h2>{{ isEditMode ? 'Edit Subzone' : 'Add New Subzone' }}</h2>
+
+  <form (ngSubmit)="onSubmit()" #subzoneForm="ngForm" class="subzone-form">
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        [(ngModel)]="subzone.name"
+        placeholder="Enter subzone name"
+        required
+      />
+    </div>
+
+    <button type="submit" [disabled]="!subzoneForm.valid">
+      {{ isEditMode ? 'Update Subzone' : 'Add Subzone' }}
+    </button>
+
+  </form>
+</div>

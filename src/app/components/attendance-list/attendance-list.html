@@ -1,0 +1,32 @@
+<div class="attendance-list-container">
+  <div class="list-header">
+    <h2>Attendance List</h2>
+    <a routerLink="/attendance/add" class="add-btn">+ Mark Attendance</a>
+  </div>
+
+  <table *ngIf="attendanceRecords.length > 0" class="attendance-table">
+    <thead>
+    <tr>
+      <th>Employee</th>
+      <th>Date</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let record of attendanceRecords">
+      <td data-label="Employee">{{ record.employee?.name }}</td>
+      <td data-label="Date">{{ record.date }}</td>
+      <td data-label="Status">
+        <span class="status-badge" [class]="record.status">{{ record.status }}</span>
+      </td>
+      <td data-label="Actions">
+        <a [routerLink]="['/attendance/edit', record.id]" class="edit-btn">Edit</a>
+        <button (click)="deleteAttendance(record.id)" class="delete-btn">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="attendanceRecords.length === 0">No attendance records found.</p>
+</div>

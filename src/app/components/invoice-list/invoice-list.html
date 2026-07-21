@@ -1,0 +1,38 @@
+<div class="invoice-list-container">
+  <div class="list-header">
+    <h2>Invoice List</h2>
+    <a routerLink="/invoices/add" class="add-btn">+ Add Invoice</a>
+  </div>
+
+  <table *ngIf="invoices.length > 0" class="invoice-table">
+    <thead>
+    <tr>
+      <th>Invoice #</th>
+      <th>Client</th>
+      <th>Invoice Date</th>
+      <th>Due Date</th>
+      <th>Total Amount</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let invoice of invoices">
+      <td data-label="Invoice #">{{ invoice.invoiceNumber }}</td>
+      <td data-label="Client">{{ invoice.client?.name }}</td>
+      <td data-label="Invoice Date">{{ invoice.invoiceDate }}</td>
+      <td data-label="Due Date">{{ invoice.dueDate }}</td>
+      <td data-label="Total Amount">₹{{ invoice.totalAmount }}</td>
+      <td data-label="Status">
+        <span class="status-badge" [class]="invoice.status">{{ invoice.status }}</span>
+      </td>
+      <td data-label="Actions">
+        <a [routerLink]="['/invoices/edit', invoice.id]" class="edit-btn">Edit</a>
+        <button (click)="deleteInvoice(invoice.id)" class="delete-btn">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="invoices.length === 0">No invoices found.</p>
+</div>

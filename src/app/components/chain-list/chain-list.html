@@ -1,0 +1,28 @@
+<div class="chain-list-container">
+  <div class="list-header">
+    <h2>Chain List</h2>
+    <a routerLink="/chains/add" class="add-btn">+ Add Chain</a>
+  </div>
+
+  <table *ngIf="chains.length > 0" class="chain-table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let chain of chains">
+      <td data-label="ID">{{ chain.id }}</td>
+      <td data-label="Name">{{ chain.name }}</td>
+      <td data-label="Actions">
+        <a [routerLink]="['/chains/edit', chain.id]" class="edit-btn">Edit</a>
+        <button (click)="deleteChain(chain.id)" class="delete-btn">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="chains.length === 0">No chains found.</p>
+</div>

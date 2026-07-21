@@ -1,0 +1,36 @@
+<div class="client-list-container">
+  <div class="list-header">
+    <h2>Client List</h2>
+    <a routerLink="/clients/add" class="add-btn">+ Add Client</a>
+  </div>
+
+  <table *ngIf="clients.length > 0" class="client-table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let client of clients">
+      <td>{{ client.id }}</td>
+      <td>{{ client.name }}</td>
+      <td>{{ client.email }}</td>
+      <td>{{ client.phoneNumber }}</td>
+      <td>{{ client.address }}</td>
+
+      <td>
+        <a [routerLink]="['/clients/edit', client.id]" class="edit-btn">Edit</a>
+        <button (click)="deleteClient(client.id)" class="delete-btn">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="clients.length === 0">No clients found.</p>
+</div>
+

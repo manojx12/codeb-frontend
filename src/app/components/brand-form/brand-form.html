@@ -1,0 +1,24 @@
+<p>brand-form works!</p>
+<div class="brand-form-container">
+  <h2>{{ isEditMode ? 'Edit Brand' : 'Add New Brand' }}</h2>
+
+  <form (ngSubmit)="onSubmit()" #brandForm="ngForm" class="brand-form">
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        [(ngModel)]="brand.name"
+        placeholder="Enter brand name"
+        required
+      />
+    </div>
+
+    <button type="submit" [disabled]="!brandForm.valid">
+      {{ isEditMode ? 'Update Brand' : 'Add Brand' }}
+    </button>
+
+  </form>
+</div>

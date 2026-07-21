@@ -1,0 +1,28 @@
+<div class="brand-list-container">
+  <div class="list-header">
+    <h2>Brand List</h2>
+    <a routerLink="/brands/add" class="add-btn">+ Add Brand</a>
+  </div>
+
+  <table *ngIf="brands.length > 0" class="brand-table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let brand of brands">
+      <td data-label="ID">{{ brand.id }}</td>
+      <td data-label="Name">{{ brand.name }}</td>
+      <td data-label="Actions">
+        <a [routerLink]="['/brands/edit', brand.id]" class="edit-btn">Edit</a>
+        <button (click)="deleteBrand(brand.id)" class="delete-btn">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="brands.length === 0">No brands found.</p>
+</div>

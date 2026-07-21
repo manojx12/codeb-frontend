@@ -1,0 +1,84 @@
+.dashboard-container {
+  max-width: 1150px;
+  margin: 2.5rem auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.dashboard-container h2 {
+  color: #1a1a2e;
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin-bottom: 1.8rem;
+}
+
+.loading-text {
+  color: #666;
+  font-size: 1rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 1.8rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+.card-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.6rem;
+}
+
+.card-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.card.highlight .card-value {
+  color: #ca8a04;
+}
+
+.card.revenue {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+}
+
+.card.revenue .card-label {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.card.revenue .card-value {
+  color: #ffffff;
+}
+
+@media (max-width: 600px) {
+  .dashboard-container {
+    padding: 1.5rem;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-value {
+    font-size: 1.7rem;
+  }
+}

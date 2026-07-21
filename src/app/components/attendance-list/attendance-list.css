@@ -1,0 +1,247 @@
+.attendance-list-container {
+  max-width: 1000px;
+  margin: 2.5rem auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.list-header h2 {
+  color: #1a1a2e;
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin-bottom: 0;
+}
+
+.add-btn {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+.add-btn:hover {
+  opacity: 0.9;
+}
+
+.attendance-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.attendance-table thead {
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+}
+
+.attendance-table th {
+  padding: 16px 20px;
+  text-align: left;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.attendance-table td {
+  padding: 16px 20px;
+  text-align: left;
+  color: #333;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.attendance-table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.attendance-table tbody tr:hover {
+  background-color: #f8f9ff;
+}
+
+.attendance-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.attendance-list-container p {
+  color: #666;
+  font-size: 1rem;
+  padding: 2rem;
+  text-align: center;
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.status-badge.present {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.status-badge.absent {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.status-badge.half_day {
+  background: #fef9c3;
+  color: #ca8a04;
+}
+
+.status-badge.on_leave {
+  background: #e0e7ff;
+  color: #4f46e5;
+}
+
+.edit-btn,
+.delete-btn {
+  display: inline-block;
+  padding: 7px 16px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  margin-right: 8px;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+}
+
+.edit-btn {
+  background: #eef2ff;
+  color: #4f46e5;
+}
+
+.edit-btn:hover {
+  background: #e0e7ff;
+}
+
+.delete-btn {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.delete-btn:hover {
+  background: #fee2e2;
+}
+
+.edit-btn:active,
+.delete-btn:active {
+  transform: scale(0.96);
+}
+
+@media (max-width: 1024px) {
+  .attendance-list-container {
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+
+  .attendance-table th,
+  .attendance-table td {
+    padding: 12px 14px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .attendance-list-container {
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+
+  .list-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .add-btn {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .attendance-table thead {
+    display: none;
+  }
+
+  .attendance-table,
+  .attendance-table tbody,
+  .attendance-table tr,
+  .attendance-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .attendance-table tr {
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+  }
+
+  .attendance-table td {
+    text-align: right;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    position: relative;
+    padding-left: 45%;
+  }
+
+  .attendance-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 16px;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    text-align: left;
+  }
+
+  .attendance-table td:last-child {
+    text-align: left;
+    padding-left: 16px;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    margin-top: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .list-header h2 {
+    font-size: 1.4rem;
+  }
+
+  .add-btn {
+    font-size: 0.85rem;
+    padding: 9px 16px;
+  }
+}

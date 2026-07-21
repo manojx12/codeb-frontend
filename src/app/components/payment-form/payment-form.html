@@ -1,0 +1,64 @@
+<div class="payment-form-container">
+  <h2>{{ isEditMode ? 'Edit Payment' : 'Add New Payment' }}</h2>
+
+  <form (ngSubmit)="onSubmit()" #paymentForm="ngForm" class="payment-form">
+
+    <div class="form-group">
+      <label for="invoice">Invoice</label>
+      <select
+        id="invoice"
+        name="invoice"
+        [(ngModel)]="selectedInvoiceId"
+        required
+      >
+        <option [ngValue]="null" disabled>-- Select Invoice --</option>
+        <option *ngFor="let inv of invoices" [ngValue]="inv.id">
+          {{ inv.invoiceNumber }} (₹{{ inv.totalAmount }})
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="amountPaid">Amount Paid (₹)</label>
+      <input
+        type="number"
+        id="amountPaid"
+        name="amountPaid"
+        [(ngModel)]="payment.amountPaid"
+        placeholder="0.00"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="paymentDate">Payment Date</label>
+      <input
+        type="date"
+        id="paymentDate"
+        name="paymentDate"
+        [(ngModel)]="payment.paymentDate"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="paymentMethod">Payment Method</label>
+      <select
+        id="paymentMethod"
+        name="paymentMethod"
+        [(ngModel)]="payment.paymentMethod"
+        required
+      >
+        <option value="cash">Cash</option>
+        <option value="cheque">Cheque</option>
+        <option value="upi">UPI</option>
+        <option value="bank_transfer">Bank Transfer</option>
+      </select>
+    </div>
+
+    <button type="submit" [disabled]="!paymentForm.valid">
+      {{ isEditMode ? 'Update Payment' : 'Add Payment' }}
+    </button>
+
+  </form>
+</div>

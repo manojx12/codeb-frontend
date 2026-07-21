@@ -1,0 +1,34 @@
+<div class="payment-list-container">
+  <div class="list-header">
+    <h2>Payment List</h2>
+    <a routerLink="/payments/add" class="add-btn">+ Add Payment</a>
+  </div>
+
+  <table *ngIf="payments.length > 0" class="payment-table">
+    <thead>
+    <tr>
+      <th>Invoice #</th>
+      <th>Amount Paid</th>
+      <th>Payment Date</th>
+      <th>Method</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let payment of payments">
+      <td data-label="Invoice #">{{ payment.invoice?.invoiceNumber }}</td>
+      <td data-label="Amount Paid">₹{{ payment.amountPaid }}</td>
+      <td data-label="Payment Date">{{ payment.paymentDate }}</td>
+      <td data-label="Method">
+        <span class="method-badge">{{ payment.paymentMethod }}</span>
+      </td>
+      <td data-label="Actions">
+        <a [routerLink]="['/payments/edit', payment.id]" class="edit-btn">Edit</a>
+        <button (click)="deletePayment(payment.id)" class="delete-btn">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="payments.length === 0">No payments found.</p>
+</div>

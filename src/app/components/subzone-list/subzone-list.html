@@ -1,0 +1,28 @@
+<div class="subzone-list-container">
+  <div class="list-header">
+    <h2>Subzone List</h2>
+    <a routerLink="/subzones/add" class="add-btn">+ Add Subzone</a>
+  </div>
+
+  <table *ngIf="subzones.length > 0" class="subzone-table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let subzone of subzones">
+      <td data-label="ID">{{ subzone.id }}</td>
+      <td data-label="Name">{{ subzone.name }}</td>
+      <td data-label="Actions">
+        <a [routerLink]="['/subzones/edit', subzone.id]" class="edit-btn">Edit</a>
+        <button (click)="deleteSubzone(subzone.id)" class="delete-btn">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="subzones.length === 0">No subzones found.</p>
+</div>

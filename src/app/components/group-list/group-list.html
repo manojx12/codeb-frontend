@@ -1,0 +1,28 @@
+<div class="group-list-container">
+  <div class="list-header">
+    <h2>Group List</h2>
+    <a routerLink="/groups/add" class="add-btn">+ Add Group</a>
+  </div>
+
+  <table *ngIf="groups.length > 0" class="group-table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let group of groups">
+      <td data-label="ID">{{ group.id }}</td>
+      <td data-label="Name">{{ group.name }}</td>
+      <td data-label="Actions">
+        <a [routerLink]="['/groups/edit', group.id]" class="edit-btn">Edit</a>
+        <button (click)="deleteGroup(group.id)" class="delete-btn">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="groups.length === 0">No groups found.</p>
+</div>

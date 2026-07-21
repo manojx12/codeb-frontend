@@ -1,0 +1,23 @@
+<div class="chain-form-container">
+  <h2>{{ isEditMode ? 'Edit Chain' : 'Add New Chain' }}</h2>
+
+  <form (ngSubmit)="onSubmit()" #chainForm="ngForm" class="chain-form">
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        [(ngModel)]="chain.name"
+        placeholder="Enter chain name"
+        required
+      />
+    </div>
+
+    <button type="submit" [disabled]="!chainForm.valid">
+      {{ isEditMode ? 'Update Chain' : 'Add Chain' }}
+    </button>
+
+  </form>
+</div>

@@ -1,0 +1,23 @@
+<div class="group-form-container">
+  <h2>{{ isEditMode ? 'Edit Group' : 'Add New Group' }}</h2>
+
+  <form (ngSubmit)="onSubmit()" #groupForm="ngForm" class="group-form">
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        [(ngModel)]="group.name"
+        placeholder="Enter group name"
+        required
+      />
+    </div>
+
+    <button type="submit" [disabled]="!groupForm.valid">
+      {{ isEditMode ? 'Update Group' : 'Add Group' }}
+    </button>
+
+  </form>
+</div>

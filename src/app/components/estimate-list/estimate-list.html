@@ -1,0 +1,36 @@
+<div class="estimate-list-container">
+  <div class="list-header">
+    <h2>Estimate List</h2>
+    <a routerLink="/estimates/add" class="add-btn">+ Add Estimate</a>
+  </div>
+
+  <table *ngIf="estimates.length > 0" class="estimate-table">
+    <thead>
+    <tr>
+      <th>Estimate #</th>
+      <th>Client</th>
+      <th>Estimate Date</th>
+      <th>Amount</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let estimate of estimates">
+      <td data-label="Estimate #">{{ estimate.estimateNumber }}</td>
+      <td data-label="Client">{{ estimate.client?.name }}</td>
+      <td data-label="Estimate Date">{{ estimate.estimateDate }}</td>
+      <td data-label="Amount">₹{{ estimate.amount }}</td>
+      <td data-label="Status">
+        <span class="status-badge" [class]="estimate.status">{{ estimate.status }}</span>
+      </td>
+      <td data-label="Actions">
+        <a [routerLink]="['/estimates/edit', estimate.id]" class="edit-btn">Edit</a>
+        <button (click)="deleteEstimate(estimate.id)" class="delete-btn">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="estimates.length === 0">No estimates found.</p>
+</div>

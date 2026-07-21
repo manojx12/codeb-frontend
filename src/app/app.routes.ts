@@ -1,3 +1,71 @@
 import { Routes } from '@angular/router';
+import { ClientList } from './components/client-list/client-list';
+import { ClientForm } from './components/client-form/client-form';
+import { ChainList } from './components/chain-list/chain-list';
+import { ChainForm } from './components/chain-form/chain-form';
+import { BrandList } from './components/brand-list/brand-list';
+import { BrandForm } from './components/brand-form/brand-form';
+import { SubzoneList } from './components/subzone-list/subzone-list';
+import { SubzoneForm } from './components/subzone-form/subzone-form';
+import { GroupList } from './components/group-list/group-list';
+import { GroupForm } from './components/group-form/group-form';
+import { InvoiceList } from './components/invoice-list/invoice-list';
+import { InvoiceForm } from './components/invoice-form/invoice-form';
+import { EstimateList } from './components/estimate-list/estimate-list';
+import { EstimateForm } from './components/estimate-form/estimate-form';
+import { PaymentList } from './components/payment-list/payment-list';
+import { PaymentForm } from './components/payment-form/payment-form';
+import { EmployeeList } from './components/employee-list/employee-list';
+import { EmployeeForm } from './components/employee-form/employee-form';
+import { AttendanceList } from './components/attendance-list/attendance-list';
+import { AttendanceForm } from './components/attendance-form/attendance-form';
+import { LeaveList } from './components/leave-list/leave-list';
+import { LeaveForm } from './components/leave-form/leave-form';
+import { PayrollList } from './components/payroll-list/payroll-list';
+import { PayrollForm } from './components/payroll-form/payroll-form';
+import { Dashboard } from './components/dashboard/dashboard';
 
-export const routes: Routes = [];
+
+export const routes: Routes = [
+  { path: 'clients', component: ClientList },
+    { path: 'clients/add', component: ClientForm },
+    { path: 'clients/edit/:id', component: ClientForm },
+    { path: 'chains', component: ChainList },
+     { path: 'chains/add', component: ChainForm },
+      { path: 'chains/edit/:id', component: ChainForm },
+       { path: 'brands', component: BrandList },
+        { path: 'brands/add', component: BrandForm },
+        { path: 'brands/edit/:id', component: BrandForm },
+          { path: 'subzones', component: SubzoneList },
+           { path: 'subzones/add', component: SubzoneForm },
+           { path: 'subzones/edit/:id', component: SubzoneForm },
+ { path: 'groups', component: GroupList },
+  { path: 'groups/add', component: GroupForm },
+  { path: 'groups/edit/:id', component: GroupForm },
+
+   { path: 'invoices', component: InvoiceList },
+    { path: 'invoices/add', component: InvoiceForm },
+    { path: 'invoices/edit/:id', component: InvoiceForm },
+    { path: 'estimates', component: EstimateList },
+    { path: 'estimates/add', component: EstimateForm },
+    { path: 'estimates/edit/:id', component: EstimateForm },
+    { path: 'payments', component: PaymentList },
+    { path: 'payments/add', component: PaymentForm },
+    { path: 'payments/edit/:id', component: PaymentForm },
+{ path: 'employees', component: EmployeeList },
+{ path: 'employees/add', component: EmployeeForm },
+{ path: 'employees/edit/:id', component: EmployeeForm },
+{ path: 'attendance', component: AttendanceList },
+{ path: 'attendance/add', component: AttendanceForm },
+{ path: 'attendance/edit/:id', component: AttendanceForm },
+{ path: 'leaves', component: LeaveList },
+{ path: 'leaves/add', component: LeaveForm },
+{ path: 'leaves/edit/:id', component: LeaveForm },
+{ path: 'payrolls', component: PayrollList },
+{ path: 'payrolls/add', component: PayrollForm },
+{ path: 'payrolls/edit/:id', component: PayrollForm },
+{ path: '', component: Dashboard, pathMatch: 'full' },
+{ path: 'dashboard', component: Dashboard },
+    { path: '', redirectTo: '/clients', pathMatch: 'full' }
+
+];

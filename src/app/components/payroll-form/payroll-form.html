@@ -1,0 +1,71 @@
+<div class="payroll-form-container">
+  <h2>{{ isEditMode ? 'Edit Payroll' : 'Add Payroll' }}</h2>
+
+  <form (ngSubmit)="onSubmit()" #payrollForm="ngForm" class="payroll-form">
+
+    <div class="form-group">
+      <label for="employee">Employee</label>
+      <select
+        id="employee"
+        name="employee"
+        [(ngModel)]="selectedEmployeeId"
+        required
+      >
+        <option [ngValue]="null" disabled>-- Select Employee --</option>
+        <option *ngFor="let emp of employees" [ngValue]="emp.id">{{ emp.name }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="month">Month</label>
+      <input
+        type="text"
+        id="month"
+        name="month"
+        [(ngModel)]="payroll.month"
+        placeholder="e.g. July 2026"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="basicSalary">Basic Salary</label>
+      <input
+        type="number"
+        id="basicSalary"
+        name="basicSalary"
+        [(ngModel)]="payroll.basicSalary"
+        (ngModelChange)="calculateNetPay()"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="deductions">Deductions</label>
+      <input
+        type="number"
+        id="deductions"
+        name="deductions"
+        [(ngModel)]="payroll.deductions"
+        (ngModelChange)="calculateNetPay()"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="netPay">Net Pay</label>
+      <input
+        type="number"
+        id="netPay"
+        name="netPay"
+        [(ngModel)]="payroll.netPay"
+        readonly
+      />
+    </div>
+
+    <button type="submit" [disabled]="!payrollForm.valid">
+      {{ isEditMode ? 'Update Payroll' : 'Save Payroll' }}
+    </button>
+
+  </form>
+</div>

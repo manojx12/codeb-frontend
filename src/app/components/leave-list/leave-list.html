@@ -1,0 +1,36 @@
+<div class="leave-list-container">
+  <div class="list-header">
+    <h2>Leave Requests</h2>
+    <a routerLink="/leaves/add" class="add-btn">+ Apply Leave</a>
+  </div>
+
+  <table *ngIf="leaves.length > 0" class="leave-table">
+    <thead>
+    <tr>
+      <th>Employee</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Reason</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let leave of leaves">
+      <td data-label="Employee">{{ leave.employee?.name }}</td>
+      <td data-label="From">{{ leave.fromDate }}</td>
+      <td data-label="To">{{ leave.toDate }}</td>
+      <td data-label="Reason">{{ leave.reason }}</td>
+      <td data-label="Status">
+        <span class="status-badge" [class]="leave.status">{{ leave.status }}</span>
+      </td>
+      <td data-label="Actions">
+        <a [routerLink]="['/leaves/edit', leave.id]" class="edit-btn">Edit</a>
+        <button (click)="deleteLeave(leave.id)" class="delete-btn">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="leaves.length === 0">No leave records found.</p>
+</div>

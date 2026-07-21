@@ -1,0 +1,34 @@
+<div class="payroll-list-container">
+  <div class="list-header">
+    <h2>Payroll Records</h2>
+    <a routerLink="/payrolls/add" class="add-btn">+ Add Payroll</a>
+  </div>
+
+  <table *ngIf="payrolls.length > 0" class="payroll-table">
+    <thead>
+    <tr>
+      <th>Employee</th>
+      <th>Month</th>
+      <th>Basic Salary</th>
+      <th>Deductions</th>
+      <th>Net Pay</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let payroll of payrolls">
+      <td data-label="Employee">{{ payroll.employee?.name }}</td>
+      <td data-label="Month">{{ payroll.month }}</td>
+      <td data-label="Basic Salary">₹{{ payroll.basicSalary }}</td>
+      <td data-label="Deductions">₹{{ payroll.deductions }}</td>
+      <td data-label="Net Pay"><strong>₹{{ payroll.netPay }}</strong></td>
+      <td data-label="Actions">
+        <a [routerLink]="['/payrolls/edit', payroll.id]" class="edit-btn">Edit</a>
+        <button (click)="deletePayroll(payroll.id)" class="delete-btn">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="payrolls.length === 0">No payroll records found.</p>
+</div>
