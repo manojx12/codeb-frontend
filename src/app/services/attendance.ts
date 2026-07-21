@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 export class Attendance {
 
 //   private baseUrl = 'http://localhost:8080/api/attendance';
-private baseUrl = `${environment.apiUrl}/attendances`;
+private baseUrl = `${environment.apiUrl}/attendance`;
   constructor(private http: HttpClient) { }
 
   getAllAttendance(): Observable<any> {
