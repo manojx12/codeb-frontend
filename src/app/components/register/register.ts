@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { Auth } from '../../services/auth';
@@ -19,7 +19,11 @@ export class Register {
   successMessage = '';
   errorMessage = '';
 
-  constructor(private authService: Auth, private router: Router) {}
+  constructor(
+    private authService: Auth,
+    private router: Router,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   onSubmit() {
     this.errorMessage = '';
@@ -33,14 +37,15 @@ export class Register {
     }).subscribe({
       next: (response) => {
         this.successMessage = response;
+        this.cdr.detectChanges();
 
-        // Naya: 3 second baad automatically login page pe redirect
         setTimeout(() => {
           this.router.navigate(['/login']);
         }, 3000);
       },
       error: (err) => {
         this.errorMessage = err.error || 'Registration failed. Please try again.';
+        this.cdr.detectChanges();
       }
     });
   }
