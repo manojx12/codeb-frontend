@@ -33,6 +33,11 @@ export class Register {
     }).subscribe({
       next: (response) => {
         this.successMessage = response;
+
+        // Naya: 3 second baad automatically login page pe redirect
+        setTimeout(() => {
+          this.router.navigate(['/login']);
+        }, 3000);
       },
       error: (err) => {
         this.errorMessage = err.error || 'Registration failed. Please try again.';
