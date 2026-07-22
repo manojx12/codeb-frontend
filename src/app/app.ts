@@ -14,11 +14,16 @@ export class App {
   protected readonly title = signal('mis-invoicing-frontend');
   showNavbar = signal(true);
 
+  private hiddenNavbarRoutes = ['/login', '/register', '/forgot-password', '/reset-password'];
+
   constructor(private router: Router) {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: any) => {
-      this.showNavbar.set(!['/login', '/register'].includes(event.urlAfterRedirects));
+      const url: string = event.urlAfterRedirects;
+      this.showNavbar.set(
+        !this.hiddenNavbarRoutes.some(route => url.startsWith(route))
+      );
     });
   }
 }
