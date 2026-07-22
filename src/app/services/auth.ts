@@ -31,6 +31,13 @@ export class Auth {
     localStorage.removeItem('role');
     localStorage.removeItem('name');
   }
+forgotPassword(email: string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/forgot-password`, { email });
+  }
+
+  resetPassword(token: string, newPassword: string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/reset-password?token=${token}`, { newPassword });
+  }
 
   isLoggedIn(): boolean {
     return !!localStorage.getItem('token');
