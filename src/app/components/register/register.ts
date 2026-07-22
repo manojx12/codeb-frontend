@@ -26,9 +26,9 @@ export class Register {
     this.successMessage = '';
 
     this.authService.register({
-      name: this.name,
+      fullName: this.name,
       email: this.email,
-      password: this.password,
+      passwordHash: this.password,
       role: this.role
     }).subscribe({
       next: (response) => {

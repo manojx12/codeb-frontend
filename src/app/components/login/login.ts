@@ -21,7 +21,7 @@ export class Login {
   onSubmit() {
     this.errorMessage = '';
 
-    this.authService.login({ email: this.email, password: this.password }).subscribe({
+    this.authService.login({ email: this.email, passwordHash: this.password }).subscribe({
       next: (response) => {
         this.router.navigate(['/']);
       },
