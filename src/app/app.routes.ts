@@ -24,7 +24,8 @@ import { LeaveForm } from './components/leave-form/leave-form';
 import { PayrollList } from './components/payroll-list/payroll-list';
 import { PayrollForm } from './components/payroll-form/payroll-form';
 import { Dashboard } from './components/dashboard/dashboard';
-
+import { Login } from './components/login/login';
+import { Register } from './components/register/register';
 
 export const routes: Routes = [
   { path: 'clients', component: ClientList },
@@ -66,6 +67,8 @@ export const routes: Routes = [
 { path: 'payrolls/edit/:id', component: PayrollForm },
 { path: '', component: Dashboard, pathMatch: 'full' },
 { path: 'dashboard', component: Dashboard },
+{ path: 'login', component: Login },
+{ path: 'register', component: Register },
     { path: '', redirectTo: '/clients', pathMatch: 'full' }
 
 ];

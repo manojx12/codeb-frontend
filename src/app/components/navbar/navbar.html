@@ -10,9 +10,10 @@
     <a routerLink="/invoices" routerLinkActive="active-link">Invoices</a>
     <a routerLink="/estimates" routerLinkActive="active-link">Estimates</a>
     <a routerLink="/payments" routerLinkActive="active-link">Payments</a>
-    <a routerLink="/employees" routerLinkActive="active-link">Employees</a>
-    <a routerLink="/attendance" routerLinkActive="active-link">Attendance</a>
-    <a routerLink="/leaves" routerLinkActive="active-link">Leaves</a>
-    <a routerLink="/payrolls" routerLinkActive="active-link">Payroll</a>
+    <a routerLink="/employees" routerLinkActive="active-link" *ngIf="isAdmin()">Employees</a>
+    <a routerLink="/attendance" routerLinkActive="active-link" *ngIf="isAdmin()">Attendance</a>
+    <a routerLink="/leaves" routerLinkActive="active-link" *ngIf="isAdmin()">Leaves</a>
+    <a routerLink="/payrolls" routerLinkActive="active-link" *ngIf="isAdmin()">Payroll</a>
+    <a (click)="logout()" class="logout-link">Logout</a>
   </div>
 </nav>
