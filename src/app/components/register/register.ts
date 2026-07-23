@@ -36,15 +36,15 @@ export class Register {
       role: this.role
     }).subscribe({
       next: (response) => {
-        this.successMessage = response;
+        this.successMessage = 'Registration successful! A verification link has been sent to your email. Please verify your email before logging in.';
         this.cdr.detectChanges();
 
         setTimeout(() => {
           this.router.navigate(['/login']);
-        }, 3000);
+        }, 4000);
       },
       error: (err) => {
-        this.errorMessage = err.error || 'Registration failed. Please try again.';
+        this.errorMessage = typeof err.error === 'string' ? err.error : (err.error?.message || err.error?.error || 'Registration failed. Please try again.');
         this.cdr.detectChanges();
       }
     });
